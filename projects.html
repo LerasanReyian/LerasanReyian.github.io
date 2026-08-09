@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== PROJECTS & SKILLS — DETAIL PAGE ==========
+         This page opens when a visitor clicks a project card
+         on the main portfolio (index.html).
+         Anchors: #paperworks, #phone-repair, #portfolio -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects and skills of Reyian Lerasan — academic paperwork, phone repair, and web portfolio.">
+    <title>Projects &amp; Skills | Reyian Lerasan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Reuses the same stylesheet as index.html — no duplicate CSS needed -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== HEADER (same nav as index for consistency) ========== -->
+    <header class="header">
+        <a href="index.html" class="logo">R<span>L.</span></a>
+
+        <!-- Mobile burger toggle (checkbox hack — no JavaScript) -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="burger" aria-label="Open navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav>
+            <ul class="nav-list">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#achievements">Achievements</a></li>
+                <li><a href="index.html#activities">Activities</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="visit-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </header>
+
+    <!-- ================================================================
+         CAROUSEL STRUCTURE (copy-paste pattern for each block):
+           <div class="carousel">
+             <input type="radio" name="GROUP" id="GROUP-N" checked>
+             <input type="radio" name="GROUP" id="GROUP-M">
+             <div class="carousel-viewport">
+               <div class="carousel-track">
+                 <label class="slide" for="GROUP-M"> ... label ... </label>
+                 <label class="slide" for="GROUP-N"> ... label ... </label>
+               </div>
+             </div>
+           </div>
+         ================================================================ -->
+    <section class="page-detail">
+        <h2 class="section-title">Projects <span>&amp;</span> Skills</h2>
+        <p class="section-sub">In-depth look at the work I'm proud of. Click a picture to see the next one.</p>
+
+        <!-- ========== ACADEMIC PAPERWORK PROJECTS ==========
+             #paperworks — linked from the "Academic Paperwork Projects" card. -->
+        <article id="paperworks" class="detail-block">
+            <div class="detail-heading">
+                <i class="fa-solid fa-file-lines card-icon"></i>
+                <h3>Academic Paperwork Projects</h3>
+            </div>
+            <p>
+                Throughout high school and college I completed various paperwork projects
+                — research papers, case studies, and documentation assignments — that
+                sharpened my research, writing, and organizational skills.
+            </p>
+
+            <div class="carousel">
+                <input type="radio" name="paperworks-carousel" id="paperworks-1" checked>
+                <input type="radio" name="paperworks-carousel" id="paperworks-2">
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <label class="slide" for="paperworks-2">
+                            <img src="evidence-paperwork.jpg" alt="Paperwork project sample">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-file-lines"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this paperwork — title, subject, what you learned.
+                                </p>
+                            </div>
+                        </label>
+
+                        <label class="slide" for="paperworks-1">
+                            <img src="evidence-paperwork-2.jpg" alt="Second paperwork sample">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-file-lines"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this paperwork — title, subject, what you learned.
+                                </p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== PHONE REPAIR & TECH ACTIVITIES ==========
+             #phone-repair — linked from the "Phone Repair" card. -->
+        <article id="phone-repair" class="detail-block">
+            <div class="detail-heading">
+                <i class="fa-solid fa-screwdriver-wrench card-icon"></i>
+                <h3>Phone Repair &amp; Tech Activities</h3>
+            </div>
+            <p>
+                Outside of coding, I enjoy hands-on tech work — especially phone repair.
+                I've handled screen and battery replacements, software troubleshooting,
+                and general hardware diagnostics. This hobby built my patience,
+                precision, and problem-solving mindset that carries over to web development.
+            </p>
+
+            <div class="carousel">
+                <input type="radio" name="repair-carousel" id="repair-1" checked>
+                <input type="radio" name="repair-carousel" id="repair-2">
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <label class="slide" for="repair-2">
+                            <img src="evidence-repair.jpg" alt="Phone repair work">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-screwdriver-wrench"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of the repair — device, what was fixed, what you learned.
+                                </p>
+                            </div>
+                        </label>
+
+                        <label class="slide" for="repair-1">
+                            <img src="evidence-repair-2.jpg" alt="Second phone repair">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-screwdriver-wrench"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of the repair — device, what was fixed, what you learned.
+                                </p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== THIS PORTFOLIO DETAILS ==========
+             #portfolio — linked from the "This Portfolio" card. -->
+        <article id="portfolio" class="detail-block">
+            <div class="detail-heading">
+                <i class="fa-solid fa-globe card-icon"></i>
+                <h3>This Portfolio</h3>
+            </div>
+            <p>
+                This website is itself one of my projects — a minimalist, professional
+                personal portfolio built entirely with semantic HTML5, CSS3 (Flexbox &amp; Grid),
+                and Font Awesome icons. It features a light gradient theme plus an automatic
+                dark theme via media queries, full mobile responsiveness, and anchor-based
+                navigation — all without a single line of JavaScript.
+                It is deployed live on GitHub Pages.
+            </p>
+
+            <div class="carousel">
+                <input type="radio" name="portfolio-carousel" id="portfolio-1" checked>
+                <input type="radio" name="portfolio-carousel" id="portfolio-2">
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <label class="slide" for="portfolio-2">
+                            <img src="evidence-portfolio-live.jpg" alt="Portfolio deployed on GitHub Pages">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-globe"></i> Live on GitHub Pages
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Screenshot of this site deployed on GitHub Pages.
+                                </p>
+                            </div>
+                        </label>
+
+                        <label class="slide" for="portfolio-1">
+                            <img src="evidence-portfolio-code.jpg" alt="Portfolio HTML/CSS source code">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-code"></i> Source Code
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    The clean HTML5 &amp; CSS3 behind this portfolio.
+                                </p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://github.com/LerasanReyian/LerasanReyian.github.io" target="_blank" rel="noopener" class="card-link">View Source on GitHub <i class="fa-solid fa-arrow-right"></i></a>
+        </article>
+
+        <!-- Back link -->
+        <p class="back-link">
+            <a href="index.html#projects" class="card-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        </p>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p>&copy; 2026 Reyian Lerasan <i class="fa-solid fa-circle footer-dot"></i> Built with HTML5 &amp; CSS3 <i class="fa-solid fa-circle footer-dot"></i> Deployed on GitHub Pages</p>
+    </footer>
+
+</body>
+</html>

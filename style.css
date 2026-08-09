@@ -1,0 +1,1216 @@
+
+
+/* ========== BASE RESET ==========
+   CSS variables let the dark theme (media query at the bottom)
+   re-skin the whole site by just overriding the variables. */
+:root {
+    --bg: linear-gradient(to right, rgb(240, 235, 245), rgb(138, 0, 138));
+    --text: rgba(20, 20, 30, 0.9);
+    --text-strong: #14141e;
+    --text-muted: rgba(20, 20, 30, 0.65);
+    --text-faint: rgba(20, 20, 30, 0.55);
+    --card-bg: rgba(255, 255, 255, 0.55);
+    --card-bg-hover: rgba(255, 255, 255, 0.8);
+    --card-border: rgba(20, 20, 30, 0.1);
+    --chip-border: rgba(20, 20, 30, 0.25);
+    --footer-border: rgba(20, 20, 30, 0.12);
+    --accent: rgb(138, 0, 138);
+    --social-hover-bg: #14141e;
+    --social-hover-icon: white;
+    color-scheme: light; /* tells the browser this page is light by default */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    scroll-behavior: smooth; /* smooth anchor scrolling */
+    list-style: none;
+}
+
+/* ========== TEXT SELECTION HIGHLIGHT ==========
+   EDIT: was the default browser blue — now warm yellow as requested. */
+::selection {
+    background: rgb(255, 213, 74); /* yellow highlight */
+    color: #14141e;                /* dark text stays readable on yellow */
+}
+
+/* EDIT: Change the --bg variable in :root above to re-theme the whole site.
+   The default pairs a soft lavender-tinted off-white with the purple brand color. */
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* ========== HEADER / NAVIGATION ========== */
+.header {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;                 /* FLEXBOX */
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background-color: rgba(0, 0, 0, 0.89);
+    backdrop-filter: blur(8px);
+    padding: 0.6rem 2rem;
+    border-radius: 3rem;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Logo: first letter plain, second letter gradient */
+.logo {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+}
+
+.logo span {
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.logo:hover {
+    transform: scale(1.08);
+}
+
+/* Nav links row — FLEXBOX */
+.nav-list {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-list a {
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: 0.3s ease-in-out;
+}
+
+/* Animated underline that expands on hover */
+.nav-list a::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    left: 0;
+    height: 3px;
+    top: 24px;
+    border-radius: 1rem;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+}
+
+.nav-list a:hover { color: white; }
+
+.nav-list a:hover::before { width: 100%; }
+
+/* "Say Hello" call-to-action button */
+.visit-btn {
+    padding: 0.6rem 1.4rem;
+    border-radius: 3rem;
+    border: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+}
+
+/* Space between the plane icon and button label */
+.visit-btn i { margin-right: 0.4rem; }
+
+.visit-btn:hover {
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+    transform: scale(1.03);
+}
+
+/* ========== SECTIONS (shared) ========== */
+section {
+    min-height: 100vh;
+    padding: 8rem 12%;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--text-strong);
+    margin-bottom: 0.5rem;
+}
+
+/* Gradient word inside every section title */
+.section-title span {
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.section-sub {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+/* ========== A. ABOUT ME (Hero) ========== */
+/* Two-column hero: photo | intro text — FLEXBOX */
+.about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 980px;
+}
+
+/* ========== PROFILE PHOTO ==========
+   Circular frame with gradient ring.
+   EDIT: change width/height to resize the photo. */
+.profile-img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;         /* crops the photo to fit the circle */
+    flex-shrink: 0;
+    padding: 5px;
+    background: linear-gradient(135deg, rgb(0, 157, 255), rgb(255, 0, 255));
+}
+
+/* Intro text column */
+.info-box {
+    display: flex;             /* FLEXBOX */
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.1rem;
+}
+
+.greeting {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+.name {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-strong);
+    line-height: 1.1;
+}
+
+.name span {
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.tagline {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.bio {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 560px;
+    color: var(--text);
+}
+
+/* ========== SELF-PROCLAMATION BADGES ==========
+   (like Brittany Chiang's "TL;DR" chips) */
+.badges {
+    display: flex;             /* FLEXBOX */
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.badges li {
+    padding: 0.35rem 1rem;
+    border-radius: 3rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-strong);
+    border: 1px solid var(--chip-border);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--liquid-ease),
+                box-shadow 0.4s var(--liquid-ease),
+                background 0.4s var(--liquid-ease),
+                border-color 0.4s var(--liquid-ease);
+}
+
+.badges li:hover {
+    transform: translateY(-4px) scale(1.04);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.20);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+                0 6px 18px rgba(138, 0, 138, 0.20),
+                0 14px 44px rgba(138, 0, 138, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* ========== PROFILE LINK BUTTONS ========== */
+.btn-group {
+    display: flex;             /* FLEXBOX */
+    gap: 1rem;
+}
+
+.btn {
+    border-radius: 3rem;
+    padding: 0.7rem 1.6rem;
+    border: 2px solid #14141e;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: #14141e;
+    white-space: nowrap;
+    transition: 0.3s ease-in-out;
+}
+
+/* Space between a button's icon and its label */
+.btn i { margin-right: 0.5rem; }
+
+.btn:hover {
+    background: #14141e;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ========== SOCIAL ICON LINKS ==========
+   Font Awesome brand icons (GitHub / LinkedIn / Facebook) */
+.socials {
+    display: flex;             /* FLEXBOX */
+    gap: 0.8rem;
+}
+
+/* Circle icon button — liquid glass hover */
+.socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--chip-border);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--liquid-ease),
+                box-shadow 0.4s var(--liquid-ease),
+                background 0.4s var(--liquid-ease),
+                border-color 0.4s var(--liquid-ease);
+}
+
+/* Glass sheen stripe (hidden until hover) */
+.socials a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -120%;
+    width: 60%;
+    background: linear-gradient(105deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.45) 50%,
+                rgba(255, 255, 255, 0.08) 100%);
+    transform: skewX(-18deg);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.socials a:hover::after {
+    animation: glassSheen 1.2s var(--liquid-ease) forwards;
+}
+
+/* The liquid glass hover state */
+.socials a:hover {
+    transform: translateY(-3px) scale(1.1);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55),
+                inset 0 -6px 12px rgba(255, 255, 255, 0.10),
+                0 8px 20px rgba(138, 0, 138, 0.30);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.socials a:active {
+    transform: scale(0.92);
+    transition-duration: 0.08s;
+}
+
+.socials a i {
+    font-size: 1.2rem;
+    color: var(--text);
+    transition: 0.3s ease-in-out;
+}
+
+.socials a:hover i { color: white; }
+
+/* ========== CARD GRID (Achievements / Activities / Projects) ========== */
+/* 3-column grid that wraps automatically on smaller screens — CSS GRID */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Individual card. EDIT: change background/border to re-theme cards.
+   Cards may be <article> or <a> elements — display:block + color:inherit
+   keeps anchor-cards looking identical to article-cards. */
+.card {
+    display: block;
+    color: inherit;
+    cursor: pointer;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    padding: 1.8rem;
+    transition: 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(138, 0, 138, 0.45);
+    background: var(--card-bg-hover);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-strong);
+    margin-bottom: 0.7rem;
+}
+
+/* Icon shown at the top of every card — swap classes in HTML to change */
+.card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.9rem;
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.card p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text);
+}
+
+/* "See Details" / "View ..." hint inside cards.
+   ----------------------------------------------------------------
+   NOTE (per request): this element has NO liquid glass effect.
+   Liquid glass = the moving light stripe (::after sheen) + blur
+   (backdrop-filter) + purple glow box-shadow. .card-link appears
+   in NONE of those rule groups, so hovering it only changes its
+   text color — nothing else moves, glows, or shines. */
+.card-link {
+    display: inline-block;  /* lets margin-top push it below the <p> while keeping it text-sized */
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    transition: color 0.3s ease; /* plain easing — deliberately NOT var(--liquid-ease) */
+}
+
+/* Slight gap before the trailing arrow icon in card links */
+.card-link i { margin-left: 0.3rem; }
+
+.card-link:hover { color: rgb(0, 157, 255); }
+
+/* ========== SKILLS TAG LIST ========== */
+.skills {
+    margin-top: 3.5rem;
+    text-align: center;
+}
+
+.skills h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-strong);
+    margin-bottom: 1.2rem;
+}
+
+.skill-list {
+    display: flex;             /* FLEXBOX */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.skill-list li {
+    padding: 0.5rem 1.3rem;
+    border-radius: 3rem;
+    border: 1px solid var(--chip-border);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--text);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s var(--liquid-ease),
+                box-shadow 0.4s var(--liquid-ease),
+                background 0.4s var(--liquid-ease),
+                border-color 0.4s var(--liquid-ease);
+}
+
+.skill-list li:hover {
+    transform: translateY(-4px) scale(1.05);
+    border-color: rgba(255, 255, 255, 0.45);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+                0 6px 18px rgba(138, 0, 138, 0.20),
+                0 14px 44px rgba(138, 0, 138, 0.12);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    padding: 2rem 12%;
+    text-align: center;
+    border-top: 1px solid var(--footer-border);
+}
+
+.footer p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--text-muted);
+}
+
+/* Tiny gradient dot separators in the footer */
+.footer-dot {
+    font-size: 0.3rem;
+    vertical-align: middle;
+    margin: 0 0.6rem;
+    color: var(--accent);
+}
+
+/* ================================================================
+   DETAIL PAGES (achievements.html / projects.html)
+   Long-form content blocks that cards on index.html link to.
+   ================================================================ */
+.page-detail {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+/* One entry on a detail page (SHS / college / awards / project) */
+.detail-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    transition: 0.3s ease-in-out;
+}
+
+.detail-block:hover {
+    border-color: rgba(138, 0, 138, 0.45);
+    background: var(--card-bg-hover);
+}
+
+/* Icon + title row inside a detail block — FLEXBOX */
+.detail-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.detail-heading .card-icon { margin-bottom: 0; }
+
+.detail-heading h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-strong);
+}
+
+.detail-block p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text);
+}
+
+/* Optional list style for awards/projects inside detail blocks */
+.detail-list {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.detail-list li {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text);
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+/* Small gradient bullet */
+.detail-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+}
+
+/* Optional image (certificate/proof) inside a detail block */
+.detail-img {
+    max-width: 100%;
+    border-radius: 0.75rem;
+    margin-top: 1rem;
+    border: 1px solid var(--card-border);
+}
+
+/* "Back to Portfolio" link at the bottom of detail pages */
+.back-link {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.back-link i { margin-right: 0.4rem; margin-left: 0; }
+
+/* ================================================================
+   RESPONSIVE DESIGN — MEDIA QUERIES
+   Tablet (<=991px) → Tablet portrait (<=768px) → Phone (<=480px)
+   ================================================================ */
+
+/* Small laptops / tablets */
+@media (max-width: 991px) {
+    section {
+        padding: 7rem 5%;
+    }
+
+    .header {
+        gap: 1.5rem;
+        padding: 0.6rem 1.2rem;
+        width: 94%;
+    }
+
+    .nav-list { gap: 1.2rem; }
+
+    /* Hero: shrink the photo and gap on smaller screens */
+    .about-container { gap: 2.5rem; }
+    .profile-img { width: 200px; height: 200px; }
+}
+
+/* ---- Default: hidden on desktop ---- */
+#menu-toggle,
+.burger { display: none; }
+
+/* ============================================================
+   MOBILE NAV — hamburger replaces the inline capsule nav
+   ============================================================ */
+@media (max-width: 768px) {
+    /* Hidden checkbox positioned off-screen */
+    #menu-toggle {
+        display: block;
+        position: absolute;
+        opacity: 0;
+        width: 44px;
+        height: 44px;
+        right: 1rem;
+        cursor: pointer;
+        z-index: 20; /* sits above the burger lines */
+    }
+
+    /* The 3-line burger icon (label for the checkbox) */
+    .burger {
+        display: flex;               /* FLEXBOX */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.55);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        cursor: pointer;
+        z-index: 10;
+        transition: background 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    }
+
+    .burger:hover {
+        background: rgba(0, 0, 0, 0.75);
+        border-color: rgba(255, 255, 255, 0.30);
+    }
+
+    /* One burger line */
+    .burger span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    }
+
+    /* X on open: lines collapse */
+    #menu-toggle:checked ~ .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    #menu-toggle:checked ~ .burger span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked ~ .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* The nav is hidden off-canvas; it slides in when :checked */
+    #menu-toggle ~ nav {
+        position: fixed;
+        top: 5.5rem;
+        right: 0;
+        width: min(280px, 82vw);
+        height: calc(100dvh - 5.5rem);
+        background: rgba(10, 8, 14, 0.92);
+        border-left: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0 0 0 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        transform: translateX(100%);
+        transition: transform 0.45s var(--liquid-ease);
+        z-index: 999;
+    }
+
+    /* Slide in when the burger is checked */
+    #menu-toggle:checked ~ nav {
+        transform: translateX(0);
+    }
+
+    /* Re-flow the pill so the burger sits top-right */
+    .header {
+        top: 0.5rem;
+        width: 94%;
+        flex-wrap: nowrap;  /* no wrap: keep it one row */
+        gap: 1rem;
+    }
+
+    /* Nav links become a vertical menu inside the drawer */
+    #menu-toggle ~ nav .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 1.2rem 1rem;
+        width: 100%;
+        height: 100%;
+    }
+
+    #menu-toggle ~ nav .nav-list li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    #menu-toggle ~ nav .nav-list li:last-child {
+        border-bottom: none;
+    }
+
+    #menu-toggle ~ nav .nav-list a {
+        display: block;
+        padding: 0.9rem 0.4rem;
+        width: 100%;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Kill the underline that was designed for the pill layout */
+    #menu-toggle ~ nav .nav-list a::before {
+        display: none;
+    }
+
+    /* Wide tap target for the mobile nav links */
+    #menu-toggle ~ nav .nav-list a:active {
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 0.5rem;
+    }
+
+    /* CTA hides on small screens to keep the header slim */
+    .visit-btn { display: none; }
+
+    /* Hero stacks vertically: photo on top, text below */
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .info-box {
+        align-items: center;
+        text-align: center;
+    }
+
+    .name { font-size: 2.2rem; }
+    .section-title { font-size: 1.8rem; }
+
+    .btn-group {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ================================================================
+   DARK THEME — automatic via system/browser preference.
+   No JavaScript needed: @media (prefers-color-scheme: dark).
+   The purple brand accent carries over to dark.
+   ================================================================ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: linear-gradient(to right, rgb(14, 10, 20), rgb(35, 8, 45));
+        --text: rgba(255, 255, 255, 0.85);
+        --text-strong: rgb(245, 242, 250);
+        --text-muted: rgba(255, 255, 255, 0.55);
+        --text-faint: rgba(255, 255, 255, 0.4);
+        --card-bg: rgba(255, 255, 255, 0.04);
+        --card-bg-hover: rgba(255, 255, 255, 0.08);
+        --card-border: rgba(255, 255, 255, 0.08);
+        --chip-border: rgba(255, 255, 255, 0.18);
+        --footer-border: rgba(255, 255, 255, 0.08);
+        --accent: rgb(200, 60, 200);
+        --social-hover-bg: rgba(255, 255, 255, 0.9);
+        --social-hover-icon: rgb(14, 10, 20);
+        color-scheme: dark; /* browser paints built-in controls dark too */
+    }
+
+    /* Profile photo ring glows subtly in dark mode */
+    .profile-img {
+        box-shadow: 0 0 0 4px rgba(255, 0, 255, 0.15);
+    }
+
+    /* Cards get a faint purple glow on hover in dark mode */
+    .card:hover,
+    .detail-block:hover {
+        box-shadow: 0 8px 30px rgba(255, 0, 255, 0.08);
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    .profile-img { width: 160px; height: 160px; }
+    .name { font-size: 1.8rem; }
+    .tagline { font-size: 1rem; }
+    .bio { font-size: 0.9rem; }
+
+    /* Hide the CTA button to keep the mobile nav compact */
+    .visit-btn { display: none; }
+}
+
+/* ================================================================
+   CSS-ONLY CAROUSEL  (radio-button trick — no JavaScript)
+
+   ----------------------------------------------------------------
+   HOW IT WORKS:
+   - Hidden <input type="radio"> buttons track the current slide.
+   - .carousel-track is a flex row N-times wider than the frame.
+   - #c-N:checked shifts the track left to reveal that slide.
+   - Clicking a slide label (img + caption) jumps to the next slide.
+
+   TO ADD ANOTHER SLIDE (e.g. a 3rd):
+   1.   Add <input type="radio" name="shs-carousel" id="shs-3">
+        next to the existing radios in the HTML for that section.
+   2.   Update the width rule: width: 200% -> 300% for that
+        section's #ids.
+   3.   Add a new slide <label class="slide" for="shs-1"> (loops).
+   ================================================================ */
+
+/* Radio inputs are invisible and never clicked directly */
+.carousel input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+}
+
+.carousel-viewport {
+    overflow: hidden;
+    border-radius: 0.75rem;
+}
+
+/* ---- Default: 2 slides (the most common case) ----------------
+   Each carousel group gets its own width & translate blocks.
+   For 3+ slides, add more selectors and set width to N*100%.       */
+#shs-1:checked ~ .carousel-viewport .carousel-track,
+#shs-2:checked ~ .carousel-viewport .carousel-track,
+#college-1:checked ~ .carousel-viewport .carousel-track,
+#college-2:checked ~ .carousel-viewport .carousel-track,
+#award-1:checked ~ .carousel-viewport .carousel-track,
+#award-2:checked ~ .carousel-viewport .carousel-track,
+#paperworks-1:checked ~ .carousel-viewport .carousel-track,
+#paperworks-2:checked ~ .carousel-viewport .carousel-track,
+#repair-1:checked ~ .carousel-viewport .carousel-track,
+#repair-2:checked ~ .carousel-viewport .carousel-track,
+#portfolio-1:checked ~ .carousel-viewport .carousel-track,
+#portfolio-2:checked ~ .carousel-viewport .carousel-track {
+    width: 200%;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.55s var(--liquid-ease);
+}
+
+/* Slide offsets — each slide is 100/N of the track (2 slides: 50%) */
+#shs-1:checked ~ .carousel-viewport .carousel-track,
+#college-1:checked ~ .carousel-viewport .carousel-track,
+#award-1:checked ~ .carousel-viewport .carousel-track,
+#paperworks-1:checked ~ .carousel-viewport .carousel-track,
+#repair-1:checked ~ .carousel-viewport .carousel-track,
+#portfolio-1:checked ~ .carousel-viewport .carousel-track {
+    transform: translateX(0);
+}
+
+#shs-2:checked ~ .carousel-viewport .carousel-track,
+#college-2:checked ~ .carousel-viewport .carousel-track,
+#award-2:checked ~ .carousel-viewport .carousel-track,
+#paperworks-2:checked ~ .carousel-viewport .carousel-track,
+#repair-2:checked ~ .carousel-viewport .carousel-track,
+#portfolio-2:checked ~ .carousel-viewport .carousel-track {
+    transform: translateX(-50%);
+}
+
+/* Each slide is a <label>, so clicking it selects the radio that
+   shows the NEXT slide (or loops back to the first). */
+.slide {
+    position: relative;
+    width: 100%;
+    flex-shrink: 0;
+    cursor: pointer;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+    border-radius: 0.75rem;
+    transition: transform 0.6s var(--liquid-ease);
+}
+
+/* Slight zoom on the active slide */
+input:checked ~ .carousel-viewport .carousel-track .slide img {
+    transform: scale(1.02);
+}
+
+/* Caption + description under the slide image */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.2rem;
+    color: white;
+    background: linear-gradient(transparent, rgba(15, 10, 20, 0.88));
+    border-radius: 0 0 0.75rem 0.75rem;
+}
+
+/* Row: slide title on the left, pointing arrow on the right */
+.slide-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.35rem;
+}
+
+.slide-title-row .slide-label-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+/* The chevron hinting at the next slide */
+.slide-title-row i {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    transition: transform 0.3s var(--liquid-ease);
+}
+
+.slide:hover .slide-title-row i { transform: translateX(3px); }
+
+/* The description text under the caption */
+.slide-description {
+    font-size: 0.82rem;
+    font-weight: 300;
+    line-height: 1.55;
+    opacity: 0.85;
+}
+
+/* ================================================================
+   CINEMATIC LIQUID GLASS EFFECTS  (pure CSS — no JavaScript)
+   ----------------------------------------------------------------
+   Hovering text/buttons/cards triggers an Apple-style "liquid
+   glass" moment: a glossy sweep of light passes across the
+   element while it lifts, zooms, and glows — slow, smooth,
+   cinematic. The glass sheen is a sliding highlight stripe
+   keyframed across the surface (::before on hoverable elements).
+
+   NOTE: none of this tracks the mouse pointer; it is a pure
+   cinematic CSS animation that runs on hover/click.
+   ================================================================ */
+
+/* Reusable timing curves */
+:root {
+    --liquid-ease: cubic-bezier(0.22, 1, 0.36, 1);  /* springy lift */
+    --glass-sheen-speed: 1.2s;                      /* slow sweep */
+}
+
+/* ================================================================
+   1)  TEXT / HEADINGS — slow zoom + layered glow
+   ================================================================ */
+.name,
+.section-title,
+.detail-heading h3 {
+    position: relative;
+    transition: transform 0.5s var(--liquid-ease),
+                text-shadow 0.5s var(--liquid-ease);
+}
+
+.name:hover,
+.section-title:hover,
+.detail-heading h3:hover {
+    transform: scale(1.04);
+    text-shadow: 0 0 14px rgba(200, 60, 200, 0.60),
+                 0 0 40px rgba(200,  60, 200, 0.35),
+                 0 0 80px rgba(255, 255, 255, 0.25);
+}
+
+/* ================================================================
+   2)  LIQUID GLASS SHEEN — only on cards, detail blocks, badges.
+       Nav capsules, "See Details"/"View Activity" links, skill
+       chips and social icons keep their ORIGINAL styles (not glass).
+   ================================================================ */
+.card,
+.detail-block,
+.badges li {
+    position: relative;
+    overflow: hidden; /* keeps the sheen inside the element */
+    transition: transform 0.45s var(--liquid-ease),
+                box-shadow 0.45s var(--liquid-ease),
+                background 0.45s var(--liquid-ease),
+                border-color 0.45s var(--liquid-ease);
+}
+
+/* The moving glass highlight stripe */
+.card::after,
+.detail-block::after,
+.badges li::after,
+.skill-list li::after,
+.socials a::after,
+.visit-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -120%;
+    width: 60%;
+    /* diagonal band of light */
+    background: linear-gradient(105deg,
+                rgba(255, 255, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0.45) 50%,
+                rgba(255, 255, 255, 0.08) 100%);
+    transform: skewX(-18deg);
+    /* hidden until hover */
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* The cinematic sweep on hover */
+.card:hover::after,
+.detail-block:hover::after,
+.badges li:hover::after,
+.skill-list li:hover::after,
+.visit-btn:hover::after {
+    animation: glassSheen var(--glass-sheen-speed) var(--liquid-ease) forwards;
+}
+
+/* Keyframed light sweep — slides fully across the element */
+@keyframes glassSheen {
+    0%   { left: -120%; opacity: 0; }
+    15%  { left: -60%;  opacity: 1; }
+    85%  { left: 120%;  opacity: 1; }
+    100% { left: 180%;  opacity: 0; }
+}
+
+/* ================================================================
+   3)  SUBTLE HOVERS (not glass) — nav, links, chips kept simple
+   ================================================================ */
+
+/* Nav capsules: keep only the underline reveal */
+.nav-list a::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    left: 0;
+    height: 3px;
+    top: 24px;
+    border-radius: 1rem;
+    transition: width 0.3s var(--liquid-ease);
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
+}
+
+.nav-list a:hover { color: white; }
+
+.nav-list a:hover::before { width: 100%; }
+
+/* "See Details" / "View Activity" — color pop only.
+   ----------------------------------------------------------------
+   SIMPLE & PLAIN (per request): hovering a .card-link ONLY fades
+   its text color from the purple accent to bright blue. It gets:
+     - NO glass sheen (::after stripe)   -> not in the sheen rule
+     - NO blur / glow / lift             -> not in the glass rule
+     - NO press squish                   -> not in the :active rule
+   Note the plain "ease" curve instead of var(--liquid-ease). */
+.card-link {
+    transition: color 0.3s ease; /* only the 'color' property animates */
+}
+
+.card-link:hover { color: rgb(0, 157, 255); } /* purple -> blue on hover */
+
+/* Skill chips: border accent + tiny lift */
+.skill-list li:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ---- Glass state on small buttons & chips -------------------
+   Restored for: social icons, badges, skill chips, visit-btn.
+   Nav capsules still do NOT get this treatment.               */
+.socials a:hover,
+.badges li:hover,
+.skill-list li:hover,
+.visit-btn:hover {
+    /* gentle cinematic lift + zoom */
+    transform: translateY(-3px) scale(1.06);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.40);
+    /* layered glow: inner light edge + soft purple halo */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55),
+                inset 0 -6px 12px rgba(255, 255, 255, 0.10),
+                0 8px 20px rgba(138, 0, 138, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* ================================================================
+    4)  PRESS FEEDBACK — deep press "squishes" like liquid
+    ================================================================
+
+    NOTE: .card-link is intentionally ABSENT from the :active
+    squish list below — per request it stays completely static
+    (no scale-down) while the user presses it. */
+.nav-list a:active,
+.visit-btn:active,
+.socials a:active,
+.badges li:active,
+.skill-list li:active,
+.card:hover:active,
+.detail-block:active,
+.profile-img:active {
+    transform: scale(0.95) translateY(1px);
+    transition-duration: 0.08s;
+}
+
+/* ================================================================
+   5)  CARDS & DETAIL BLOCKS — bigger cinematic moment
+   ================================================================ */
+.card:hover,
+.detail-block:hover {
+    transform: translateY(-8px) scale(1.03);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45),
+                inset 0 -10px 20px rgba(255, 255, 255, 0.06),
+                0 6px 20px rgba(138, 0, 138, 0.15),
+                0 22px 60px rgba(138, 0, 138, 0.28);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ================================================================
+   6)  PROFILE PHOTO — slow glassy zoom + blossom glow
+   ================================================================ */
+.profile-img {
+    transition: transform 0.6s var(--liquid-ease),
+                box-shadow 0.6s var(--liquid-ease);
+}
+
+.profile-img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.10),
+                0 0 0 12px rgba(255, 0, 255, 0.10),
+                0 18px 50px rgba(255, 0, 255, 0.35);
+}
+
+/* ================================================================
+   7)  DARK THEME VARIANTS — deeper glass, softer glows
+   ================================================================ */
+@media (prefers-color-scheme: dark) {
+    .card:hover,
+    .detail-block:hover {
+        border-color: rgba(255, 255, 255, 0.22);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25),
+                    inset 0 -10px 20px rgba(255, 255, 255, 0.04),
+                    0 6px 20px rgba(200, 60, 200, 0.18),
+                    0 22px 60px rgba(200, 60, 200, 0.32);
+    }
+
+    /* Dark-theme sheen stays subtle, not milky */
+    .card::after,
+    .detail-block::after,
+    .badges li::after {
+        background: linear-gradient(105deg,
+                    rgba(255, 255, 255, 0.04) 0%,
+                    rgba(255, 255, 255, 0.22) 50%,
+                    rgba(255, 255, 255, 0.04) 100%);
+    }
+}
+
+/* ================================================================
+   8)  ACCESSIBILITY — focus ring + reduced motion
+   ================================================================ */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+}
+
+/* Users who prefer less motion get near-instant transitions */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        --glass-sheen-speed: 0.01ms;
+    }
+}

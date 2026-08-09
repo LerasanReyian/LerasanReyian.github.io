@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ========== ACHIEVEMENTS & EXPERIENCES — DETAIL PAGE ==========
+         This page opens when a visitor clicks an achievement card
+         on the main portfolio (index.html).
+         Anchors: #shs, #college, #awards -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Achievements and experiences of Reyian Lerasan — senior high school, college, and awards.">
+    <title>Achievements &amp; Experiences | Reyian Lerasan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Reuses the same stylesheet as index.html — no duplicate CSS needed -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== HEADER (same nav as index for consistency) ========== -->
+    <header class="header">
+        <a href="index.html" class="logo">R<span>L.</span></a>
+
+        <!-- Mobile burger toggle (checkbox hack — no JavaScript) -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="burger" aria-label="Open navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav>
+            <ul class="nav-list">
+                <!-- "_" links go back to sections on the main page -->
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#achievements">Achievements</a></li>
+                <li><a href="index.html#activities">Activities</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+            </ul>
+        </nav>
+        <a href="index.html" class="visit-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+    </header>
+
+    <!-- ================================================================
+         CAROUSEL REFERENCE (pure CSS — no JavaScript)
+         ----------------------------------------------------------------
+         Each carousel uses hidden radio buttons to track the current
+         slide. Clicking a slide label selects the radio that shows
+         the NEXT slide (looping back to the first at the end).
+
+         TO ADD ANOTHER SLIDE to a carousel below:
+         1)  Add a radio:  <input type="radio" name="shs-carousel" id="shs-3">
+             next to the existing radios for that section.
+         2)  In style.css, change the two matching selectors from
+             width: 200% to width: 300% and add:
+                 #shs-3:checked ~ .carousel-viewport .carousel-track
+                 { transform: translateX(-66.666%); }
+         3)  Copy a <label class="slide"> and update src/desc/for.
+         ================================================================ -->
+
+    <!-- ================================================================
+         DETAIL CONTENT
+         Each block has an id (#shs, #college, #awards) so the cards
+         on index.html can link directly to the right section.
+         ================================================================ -->
+    <section class="page-detail">
+        <h2 class="section-title">Achievements <span>&amp;</span> Experiences</h2>
+        <p class="section-sub">The full story behind my milestones. Click a picture to see the next one.</p>
+
+        <!-- ========== SENIOR HIGH SCHOOL ===============
+             #shs — linked from the "Senior High School" card. -->
+        <article id="shs" class="detail-block">
+            <div class="detail-heading">
+                <i class="fa-solid fa-school card-icon"></i>
+                <h3>Senior High School</h3>
+            </div>
+            <p>
+                During senior high school, I took the Science, Technology, Engineering, and Mathematics (STEM) strand. Even though it is slightly different from my current field of study, it introduced me the basic and fundamentals of mathematics where i can apply this to my course in computer fundamentals and basic programming. This is where my curiosity
+                for technology began — learning how computers work and how software is built
+                inspired me to pursue IT in college.
+            </p>
+
+            <!-- ===== CSS CAROUSEL: radios first, then track ===== -->
+            <div class="carousel">
+                <!-- Radio buttons — "checked" on the first one shows it at start -->
+                <input type="radio" name="shs-carousel" id="shs-1" checked>
+                <input type="radio" name="shs-carousel" id="shs-2">
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <!-- Slide 1: clicking it jumps to Slide 2 -->
+                        <label class="slide" for="shs-2">
+                            <img src="system/evidence-shs.jpeg" alt="SHS photo 1">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-camera"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this picture — what it shows and why it matters.
+                                </p>
+                            </div>
+                        </label>
+
+                        <!-- Slide 2: clicking it loops back to Slide 1 -->
+                        <label class="slide" for="shs-1">
+                            <img src="evidence-shs-2.jpg" alt="SHS photo 2">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-camera"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this picture — what it shows and why it matters.
+                                </p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== 1ST YEAR COLLEGE ==========
+             #college — linked from the "1st Year College" card.
+             EDIT: Your real 1st year details. -->
+        <article id="college" class="detail-block">
+            <div class="detail-heading">
+                <i class="fa-solid fa-graduation-cap card-icon"></i>
+                <h3>1st Year College</h3>
+            </div>
+            <p>
+                My first year at the University of The Immaculate Conception as a BSIT student
+                covered programming fundamentals, computer hardware, and — my favorite —
+                web development basics with HTML5 and CSS3. I joined class group projects
+                and labs where I got to collaborate and problem-solve with classmates.
+            </p>
+
+            <div class="carousel">
+                <input type="radio" name="college-carousel" id="college-1" checked>
+                <input type="radio" name="college-carousel" id="college-2">
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <label class="slide" for="college-2">
+                            <img src="evidence-college.jpg" alt="College photo 1">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-camera"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this picture — what it shows and why it matters.
+                                </p>
+                            </div>
+                        </label>
+
+                        <label class="slide" for="college-1">
+                            <img src="evidence-college-2.jpg" alt="College photo 2">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-camera"></i> Write your caption
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this picture — what it shows and why it matters.
+                                </p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ========== AWARDS & RECOGNITION ==========
+             #awards — linked from the "Awards & Recognition" card.
+             EDIT: Replace with YOUR actual award list.
+             >>> THIS IS THE MAIN PLACE FOR YOUR CERTIFICATES <<< -->
+        <article id="awards" class="detail-block">
+            <div class="detail-heading">
+                <i class="fa-solid fa-award card-icon"></i>
+                <h3>Awards &amp; Recognition</h3>
+            </div>
+            <p>
+                Throughout my academic journey I have received recognition for
+                consistent effort and performance. Each award motivated me to keep
+                improving in my studies and in my craft.
+            </p>
+
+            <div class="carousel">
+                <input type="radio" name="award-carousel" id="award-1" checked>
+                <input type="radio" name="award-carousel" id="award-2">
+
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+
+                        <label class="slide" for="award-2">
+                            <img src="evidence-award1.jpg" alt="Award certificate">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-certificate"></i> Award name or event
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this award — what it was for, when, and why it matters to you.
+                                </p>
+                            </div>
+                        </label>
+
+                        <label class="slide" for="award-1">
+                            <img src="evidence-award2.jpg" alt="Second award or certificate">
+                            <div class="slide-caption">
+                                <div class="slide-title-row">
+                                    <span class="slide-label-text">
+                                        <i class="fa-solid fa-certificate"></i> Award name or event
+                                    </span>
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <p class="slide-description">
+                                    Description of this award — what it was for, when, and why it matters to you.
+                                </p>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Back link -->
+        <p class="back-link">
+            <a href="index.html#achievements" class="card-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        </p>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <p>&copy; 2026 Reyian Lerasan <i class="fa-solid fa-circle footer-dot"></i> Built with HTML5 &amp; CSS3 <i class="fa-solid fa-circle footer-dot"></i> Deployed on GitHub Pages</p>
+    </footer>
+
+</body>
+</html>

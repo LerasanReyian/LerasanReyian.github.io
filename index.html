@@ -1,21 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- ========== PAGE META ==========-->
+        
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+    <meta name="description" content="Personal portfolio of Reyian Lerasan — IT student at University of The Immaculate Conception, aspiring front-end/back-end developer.">
+    <title>RBL | Portfolio</title>
+    <!-- Google Font: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (CDN) — provides all icons on this site.
+         Free icons only: solid (fa-solid) + brands (fa-brands). -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<section id="taas">
 <body>
-    
-    <a href = "about.html" target="_self">about</a>
-    <h1>Welcome to My Website!</h1>
-    <h2>My Portfolio</h2>
-    <section id="article">
-    <article>    
-    <p><strong>Welcome to my portfolio!</strong> Here you can find information about myself. I hope you enjoy visiting my website!. </p>
-        
-</article>
-</section>
+
+<!-- ================================================================
+         HEADER / NAVIGATION
+         ----------------------------------------------------------------
+         HOW IT WORKS:
+
+         DESKTOP:
+           - The header is one fixed floating pill centered at the top.
+           - Links jump to page sections via #id anchors.
+
+         MOBILE:
+           - 3 line as burger icon
+           - The inline nav list vanishes.
+           - The burger icon appears. Tapping it opens a slide-in
+             drawer from the RIGHT with the same links stacked
+             vertically.
+
+        ================================================================ -->
+
+    <header class="header">
+        <!-- Logo: RBL -->
+        <a href="#about" class="logo">R<span>LB.</span></a>
+
+        <!-- ========== MOBILE BURGER TOGGLE ==========
+             A hidden checkbox controls the nav on small screens.
+             The label below is the clickable 3-line "burger" icon.
+             On desktop the whole thing is invisible (CSS hides it). -->
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="burger" aria-label="Open navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+        <!-- CTA button — point href to your email, e.g. mailto:you@email.com -->
+        <a href="mailto:rlerasan_24000000.uic.edu.ph" class="visit-btn"><i class="fa-solid fa-paper-plane"></i> Say Hello</a>
+    </header>
+
+    <!-- ================================================================
+         ABOUT ME SECTION
+         circular profile photo on the left, intro text on the right.
+         ================================================================ -->
+    <section id="about" class="about">
+        <div class="about-container">
+
+            <!-- ========== PROFILE PHOTO ========== -->
+            <img src="system/profile.jpg" alt="Photo of Reyian Lerasan" class="profile-img">
+
+            <div class="info-box">
+                <p class="greeting">Hey! My name is</p>
+                <!--  full name. The <span> gets the gradient color. -->
+                <h1 class="name">Reyian <span>Lerasan B.</span></h1>
+                <p class="tagline">Aspiring Front-End / Back-End Developer</p>
+
+                <!-- ========== YOUR INTRODUCTION ========== -->
+                <p class="bio">
+                    I'm a web developer with a passion for front-end/back-end development
+                    and design. I'm currently a second-year student at the
+                    University of The Immaculate Conception pursuing a degree in
+                    Information Technology. I aspire toward a career that will allow me
+                    to channel my creativity through crafting beautiful websites and
+                    creating new trends that may soon help people enjoy engaging experiences.
+                </p>
+
+                <!-- ========== SELF-PROCLAMATION BADGES ========== -->
+                <ul class="badges">
+                    <li>Web Developer</li>
+                    <li>IT Student</li>
+                    <li>Tech Tinkerer</li>
+                </ul>
+
+                <!-- ========== SOCIAL LINKS (circle icons) ========== -->
+                <div class="socials">
+                    <a href="https://github.com/LerasanReyian" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/lerasan-b0b563327/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+        ACHIEVEMENTS & EXPERIENCES SECTION
+         ================================================================ -->
+    <section id="achievements">
+        <h2 class="section-title">Achievements <span>&amp;</span> Experiences</h2>
+        <p class="section-sub">Milestones from my senior high school and 1st year college journey. Click a card to see details.</p>
+
+        <div class="card-grid">
+            <!-- ========== CARD: SENIOR HIGH SCHOOL ==========
+                 Clicking this card opens achievements.html#shs —
+                 a dedicated page with full details + place for proof. -->
+            <a href="achievements.html#shs" target="_self" class="card">
+                <i class="fa-solid fa-school card-icon"></i>
+                <h3>Senior High School</h3>
+                <p>My experiences and accomplishments during senior high school that built the foundation of my academic journey.</p>
+                <span class="card-link">See Details <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- ========== CARD: 1ST YEAR COLLEGE ==========
+                 Links to achievements.html#college.-->
+            <a href="achievements.html#college" target="_self" class="card">
+                <i class="fa-solid fa-graduation-cap card-icon"></i>
+                <h3>1st Year College</h3>
+                <p>Key experiences from my first year as a BSIT student at University of The Immaculate Conception.</p>
+                <span class="card-link">See Details <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- ========== CARD: AWARDS ==========
+                 Links to achievements.html#awards.-->
+            <a href="achievements.html#awards" target="_self" class="card">
+                <i class="fa-solid fa-award card-icon"></i>
+                <h3>Awards &amp; Recognition</h3>
+                <p>Awards I have received throughout my academic journey.</p>
+                <span class="card-link">See Details <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ================================================================
+         COURSE ACTIVITIES SECTION
+         ================================================================ -->
+    <section id="activities">
+        <h2 class="section-title">Course <span>Activities</span></h2>
+        <p class="section-sub">In-class work built with HTML5 &amp; CSS3.</p>
+
+        <div class="card-grid">
+            <!-- ========== HTML ACTIVITY 1.1 ==========
+                 Fashion Blog link. -->
+            <article class="card">
+                <i class="fa-solid fa-shirt card-icon"></i>
+                <h3>HTML Activity 1.1</h3>
+                <p>Fashion Blog — a structured blog page using semantic HTML tags, headings, images, and navigation links.</p>
+                <a href="https://lerasanreyian.github.io/Activity/index.html" target="_blank" rel="noopener" class="card-link">View Activity <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <!-- ========== HTML ACTIVITY 1.2 ==========
+            Wine Festival Schedule link. -->
+            <article class="card">
+                <i class="fa-solid fa-wine-glass card-icon"></i>
+                <h3>HTML Activity 1.2</h3>
+                <p>Wine Festival Schedule  an event schedule layout using tables and lists with readable, accessible structure.</p>
+                <a href="https://lerasanreyian.github.io/Activity/wineFestival.html" target="_blank" rel="noopener" class="card-link">View Activity <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+
+            <!-- ========== CSS ACTIVITY 2.1 ==========
+             Davies Burger link. -->
+            <article class="card">
+                <i class="fa-solid fa-burger card-icon"></i>
+                <h3>CSS Activity 2.1</h3>
+                <p>Davies Burger — a restaurant page styled with the CSS box model, colors, typography, and spacing.</p>
+                <a href="https://lerasanreyian.github.io/Activity/davies-burger-main/" target="_blank" rel="noopener" class="card-link">View Activity <i class="fa-solid fa-arrow-right"></i></a>
+            </article>
+        </div>
+    </section>
+
+    <!-- ================================================================
+        PROJECTS & SKILLS SECTION
+         ================================================================ -->
+    <section id="projects">
+        <h2 class="section-title">Projects <span>&amp;</span> Skills</h2>
+        <p class="section-sub">School projects, personal work, and hands-on tech experience.</p>
+
+        <div class="card-grid">
+            <!-- ========== CARD: PAPERWORK PROJECTS ==========
+                 Clicking opens projects.html#paperworks with full details. -->
+            <a href="projects.html#paperworks" target="_self" class="card">
+                <i class="fa-solid fa-file-lines card-icon"></i>
+                <h3>Academic Paperwork Projects</h3>
+                <p>School paper works and research projects completed throughout high school and college.</p>
+                <span class="card-link">See Details <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- ========== CARD: PERSONAL TECH ACTIVITIES ==========
+                 Links to projects.html#phone-repair. -->
+            <a href="projects.html#phone-repair" target="_self" class="card">
+                <i class="fa-solid fa-screwdriver-wrench card-icon"></i>
+                <h3>Phone Repair &amp; Tech Activities</h3>
+                <p>Hands-on personal tech work such as phone repair and hardware troubleshooting.</p>
+                <span class="card-link">See Details <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+
+            <!-- ========== CARD: THIS PORTFOLIO ==========
+                 Links to projects.html#portfolio for build details. -->
+            <a href="projects.html#portfolio" target="_self" class="card">
+                <i class="fa-solid fa-globe card-icon"></i>
+                <h3>This Portfolio</h3>
+                <p>Designed and built from scratch with semantic HTML5, CSS3 Flexbox &amp; Grid — deployed live on GitHub Pages.</p>
+                <span class="card-link">See Details <i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+        </div>
+
+        <!-- ========== SKILLS TAG LIST ========== -->
+        <div class="skills">
+            <h3>Tech Stack</h3>
+            <ul class="skill-list">
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>Git &amp; GitHub</li>
+                <li>Responsive Design</li>
+                <li>Phone &amp; Hardware Repair</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ==========
+         EDIT: Update the name/year. -->
+    <footer class="footer">
+        <p>&copy; 2026 Reyian Lerasan <i class="fa-solid fa-circle footer-dot"></i> Built with HTML5 &amp; CSS3 <i class="fa-solid fa-circle footer-dot"></i> Deployed on GitHub Pages</p>
+    </footer>
+
 </body>
 </html>
