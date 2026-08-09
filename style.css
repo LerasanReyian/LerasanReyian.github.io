@@ -219,7 +219,7 @@ section {
 }
 
 .name span {
-    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+    background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -239,8 +239,7 @@ section {
     color: var(--text);
 }
 
-/* ========== SELF-PROCLAMATION BADGES ==========
-   (like Brittany Chiang's "TL;DR" chips) */
+/* ========== SELF-PROCLAMATION BADGES ========== */
 .badges {
     display: flex;             /* FLEXBOX */
     flex-wrap: wrap;
@@ -378,9 +377,7 @@ section {
     gap: 1.5rem;
 }
 
-/* Individual card. EDIT: change background/border to re-theme cards.
-   Cards may be <article> or <a> elements — display:block + color:inherit
-   keeps anchor-cards looking identical to article-cards. */
+/* Individual card. */
 .card {
     display: block;
     color: inherit;
@@ -422,13 +419,7 @@ section {
     color: var(--text);
 }
 
-/* "See Details" / "View ..." hint inside cards.
-   ----------------------------------------------------------------
-   NOTE (per request): this element has NO liquid glass effect.
-   Liquid glass = the moving light stripe (::after sheen) + blur
-   (backdrop-filter) + purple glow box-shadow. .card-link appears
-   in NONE of those rule groups, so hovering it only changes its
-   text color — nothing else moves, glows, or shines. */
+/* "See Details"  */
 .card-link {
     display: inline-block;  /* lets margin-top push it below the <p> while keeping it text-sized */
     margin-top: 1rem;
@@ -776,7 +767,7 @@ section {
 
 /* ================================================================
    DARK THEME — automatic via system/browser preference.
-   No JavaScript needed: @media (prefers-color-scheme: dark).
+    @media (prefers-color-scheme: dark).
    The purple brand accent carries over to dark.
    ================================================================ */
 @media (prefers-color-scheme: dark) {
@@ -821,21 +812,7 @@ section {
 }
 
 /* ================================================================
-   CSS-ONLY CAROUSEL  (radio-button trick — no JavaScript)
-
-   ----------------------------------------------------------------
-   HOW IT WORKS:
-   - Hidden <input type="radio"> buttons track the current slide.
-   - .carousel-track is a flex row N-times wider than the frame.
-   - #c-N:checked shifts the track left to reveal that slide.
-   - Clicking a slide label (img + caption) jumps to the next slide.
-
-   TO ADD ANOTHER SLIDE (e.g. a 3rd):
-   1.   Add <input type="radio" name="shs-carousel" id="shs-3">
-        next to the existing radios in the HTML for that section.
-   2.   Update the width rule: width: 200% -> 300% for that
-        section's #ids.
-   3.   Add a new slide <label class="slide" for="shs-1"> (loops).
+   CSS-ONLY CAROUSEL 
    ================================================================ */
 
 /* Radio inputs are invisible and never clicked directly */
@@ -1065,7 +1042,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 }
 
 /* ================================================================
-   3)  SUBTLE HOVERS (not glass) — nav, links, chips kept simple
+    SUBTLE HOVERS (not glass) — nav, links, chips kept simple
    ================================================================ */
 
 /* Nav capsules: keep only the underline reveal */
@@ -1085,14 +1062,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 
 .nav-list a:hover::before { width: 100%; }
 
-/* "See Details" / "View Activity" — color pop only.
-   ----------------------------------------------------------------
-   SIMPLE & PLAIN (per request): hovering a .card-link ONLY fades
-   its text color from the purple accent to bright blue. It gets:
-     - NO glass sheen (::after stripe)   -> not in the sheen rule
-     - NO blur / glow / lift             -> not in the glass rule
-     - NO press squish                   -> not in the :active rule
-   Note the plain "ease" curve instead of var(--liquid-ease). */
+/* "See Details" / "View Activity" — color pop only */
 .card-link {
     transition: color 0.3s ease; /* only the 'color' property animates */
 }
@@ -1125,7 +1095,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 }
 
 /* ================================================================
-    4)  PRESS FEEDBACK — deep press "squishes" like liquid
+     PRESS FEEDBACK — deep press "squishes" like liquid
     ================================================================
 
     NOTE: .card-link is intentionally ABSENT from the :active
@@ -1144,7 +1114,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 }
 
 /* ================================================================
-   5)  CARDS & DETAIL BLOCKS — bigger cinematic moment
+   CARDS & DETAIL BLOCKS — bigger cinematic moment
    ================================================================ */
 .card:hover,
 .detail-block:hover {
@@ -1159,7 +1129,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 }
 
 /* ================================================================
-   6)  PROFILE PHOTO — slow glassy zoom + blossom glow
+   PROFILE PHOTO — slow glassy zoom + blossom glow
    ================================================================ */
 .profile-img {
     transition: transform 0.6s var(--liquid-ease),
@@ -1174,7 +1144,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 }
 
 /* ================================================================
-   7)  DARK THEME VARIANTS — deeper glass, softer glows
+    DARK THEME VARIANTS — deeper glass, softer glows
    ================================================================ */
 @media (prefers-color-scheme: dark) {
     .card:hover,
@@ -1198,7 +1168,7 @@ input:checked ~ .carousel-viewport .carousel-track .slide img {
 }
 
 /* ================================================================
-   8)  ACCESSIBILITY — focus ring + reduced motion
+    ACCESSIBILITY — focus ring + reduced motion
    ================================================================ */
 :focus-visible {
     outline: 2px solid var(--accent);
