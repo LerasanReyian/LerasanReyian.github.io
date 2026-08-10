@@ -1436,11 +1436,11 @@ body:has(.shell){
 /* Profile photo — circular crop with the blue→magenta gradient ring,
    same treatment as the About page photo ---- sa achievment and project profile*/
 .shell .profile-img{
-    width: 190px; height: 190px;
+    width: 175px; height: 175px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding: 3px;
     background: linear-gradient(135deg, rgb(0, 157, 255), rgb(255, 0, 255));
 }
