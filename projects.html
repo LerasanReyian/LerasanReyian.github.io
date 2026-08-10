@@ -1,244 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ========== PROJECTS & SKILLS — DETAIL PAGE ==========
-         This page opens when a visitor clicks a project card
-         on the main portfolio (index.html).
-         Anchors: #paperworks, #phone-repair, #portfolio -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects and skills of Reyian Lerasan — academic paperwork, phone repair, and web portfolio.">
-    <title>Projects &amp; Skills | Reyian Lerasan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Reuses the same stylesheet as index.html — no duplicate CSS needed -->
-    <link rel="stylesheet" href="style.css">
+  <!-- ========== PROJECTS — sidebar blueprint page ========= -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Projects and skills of Reyian Lerasan — academic paperwork, phone repair, and web portfolio.">
+  <title>Projects &amp; Skills | Reyian Lerasan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- All CSS lives in style.css (see the .shell section at the bottom) -->
+  <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
-    <!-- ========== HEADER (same nav as index for consistency) ========== -->
-    <header class="header">
-        <a href="index.html" class="logo">R<span>LB.</span></a>
+  <div class="shell">
 
-        <!-- Mobile burger toggle (checkbox hack — no JavaScript) -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="burger" aria-label="Open navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+    <!-- ---- Mobile drawer controls (visible only on small screens) ----
+         the checkbox holds the open/closed state, .burger is
+         the floating button, and .backdrop is an invisible label that
+         unchecks the box when tapped. Must stay siblings of .sidebar. -->
+    <input type="checkbox" id="drawer-toggle" aria-label="Open menu">
+    <label class="burger" for="drawer-toggle" aria-label="Toggle navigation drawer">
+      <span></span><span></span><span></span>
+    </label>
+    <label class="backdrop" for="drawer-toggle" aria-label="Close menu"></label>
 
-        <nav>
-            <ul class="nav-list">
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#achievements">Achievements</a></li>
-                <li><a href="index.html#activities">Activities</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-            </ul>
+    <!-- ==============================================================
+         LEFT SIDEBAR — identity
+         ============================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <img src="system/profile2.jpeg" alt="Photo of Reyian Lerasan" class="profile-img">
+        <h1 class="profile-name">Reyian Lerasan</h1>
+        <p class="profile-role">IT Student · Developer</p>
+        <p class="profile-tag">Aspiring front-end / back-end developer crafting clean, people-friendly web experiences.</p>
+
+        <!-- Each link sits inside a <label for="drawer-toggle"> so one
+             tap both navigates (the <a>) and closes the drawer (the
+             label unchecks the checkbox) — pure HTML/CSS. -->
+        <nav class="side-nav" aria-label="Page sections">
+          <label for="drawer-toggle"><a href="#projects" class="active">Projects</a></label>
+          <label for="drawer-toggle"><a href="#skills">Skills</a></label>
+          <label for="drawer-toggle"><a href="index.html">← Back Home</a></label>
         </nav>
-        <a href="index.html" class="visit-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
-    </header>
+      </div>
+
+      <div class="side-socials">
+        <a href="https://github.com/LerasanReyian" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/lerasan-b0b563327/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/reyian.lerasan" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="mailto:rlerasan_24000000@uic.edu.ph" aria-label="Email"><i class="fa-solid fa-paper-plane"></i></a>
+      </div>
+    </aside>
+
+    <!-- ==============================================================
+         RIGHT CONTENT COLUMN
+         ============================================================== -->
+    <main class="content">
+
+      <!-- ============ PROJECTS ============
+           Each card is wrapped in <a class="xp-link" href="#zoom-...">;
+           clicking it opens the matching .modal below via :target.
+           To re-theme: change the href + modal id + img src together. -->
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="proj-grid">
+
+          <article class="proj-card" id="paperworks">
+            <!-- The whole card is one link that opens the PDF directly in a
+                 new tab — no modal on this card. (The card is already wrapped
+                 in a single <a class="xp-link"> for the photo thumbnail click.) -->
+            <a class="xp-link" href="system/1-BANZON-C1.pdf" target="_blank" rel="noopener">
+              <img src="system/project1.jpg" alt="Paperwork project thumbnail">
+              <div>
+                <h3>Academic Paperwork Projects</h3>
+                <p>Research papers, case studies, and documentation assignments that sharpened my research, writing, and organizational skills throughout high school and college.</p>
+                <ul class="xp-tags"><li>Research</li><li>Writing</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <article class="proj-card" id="paperworks2">
+            <a class="xp-link" href="system/casestudy-C1.pdf" target="_blank" rel="noopener">
+              <img src="system/casestudy.png" alt="Paperwork project thumbnail">
+              <div>
+                <h3>Academic Paperwork Projects</h3>
+                <p>Research papers, case studies, and documentation assignments that sharpened my research, writing, and organizational skills throughout high school and college.</p>
+                <ul class="xp-tags"><li>Research</li><li>Writing</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <article class="proj-card" id="phone-repair">
+            <a class="xp-link" href="#zoom-repair">
+              <img src="system/laptop.jpg" alt="Phone repair thumbnail">
+              <div>
+                <h3>Phone Repair &amp; Tech Activities</h3>
+                <p>Screen and battery replacements, software troubleshooting, and hardware diagnostics — hands-on work that built the patience and precision I bring to code.</p>
+                <ul class="xp-tags"><li>Hardware</li><li>Repair</li><li>Troubleshooting</li></ul>
+              </div>
+            </a>
+          </article>
+
+          <article class="proj-card" id="portfolio">
+            <!-- The whole card is one link to the live site — no modal. -->
+            <a class="xp-link" href="https://lerasanreyian.github.io/" target="_blank" rel="noopener">
+              <img src="system/logo.png" alt="Portfolio thumbnail">
+              <div>
+                <h3>This Portfolio</h3>
+                <p>Designed and built from scratch with semantic HTML5, CSS3 Flexbox &amp; Grid, deployed live on GitHub Pages.</p>
+                <ul class="xp-tags"><li>HTML5</li><li>CSS3</li><li>GitHub Pages</li></ul>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ============ SKILLS ============ -->
+      <section id="skills" class="section">
+        <h2>Skills</h2>
+        <ul class="xp-tags xp-tags--wide">
+          <li>HTML5</li><li>CSS3</li><li>Java</li>
+          <li>Git &amp; GitHub</li><li>Responsive Design</li>
+          <li>Phone &amp; Hardware Repair</li>
+        </ul>
+      </section>
+
+      <p class="page-footer-note">
+        © 2026 Reyian Lerasan · Built with HTML5 &amp; CSS3 only
+      </p>
+    </main>
 
     <!-- ================================================================
-         CAROUSEL STRUCTURE (copy-paste pattern for each block):
-           <div class="carousel">
-             <input type="radio" name="GROUP" id="GROUP-N" checked>
-             <input type="radio" name="GROUP" id="GROUP-M">
-             <div class="carousel-viewport">
-               <div class="carousel-track">
-                 <label class="slide" for="GROUP-M"> ... label ... </label>
-                 <label class="slide" for="GROUP-N"> ... label ... </label>
-               </div>
-             </div>
-           </div>
+         MODALS — one per project, opened by the :target selector.
+         To add a new one: copy a block, change the id, img src, caption,
+         and point a card's href at "that #id". Modals live inside .shell
+         so they inherit the scoped design tokens from style.css.
          ================================================================ -->
-    <section class="page-detail">
-        <h2 class="section-title">Projects <span>&amp;</span> Skills</h2>
-        <p class="section-sub">In-depth look at the work I'm proud of. Click a picture to see the next one.</p>
 
-        <!-- ========== ACADEMIC PAPERWORK PROJECTS ==========
-             #paperworks — linked from the "Academic Paperwork Projects" card. -->
-        <article id="paperworks" class="detail-block">
-            <div class="detail-heading">
-                <i class="fa-solid fa-file-lines card-icon"></i>
-                <h3>Academic Paperwork Projects</h3>
-            </div>
-            <p>
-                Throughout high school and college I completed various paperwork projects
-                — research papers, case studies, and documentation assignments — that
-                sharpened my research, writing, and organizational skills.
-            </p>
+  <!-- ---- PHONE REPAIR MODAL — CSS-only carousel of photos ----
+       HOW TO ADD A PHOTO:
+         1) Add <input type="radio" name="repair-carousel" id="repair-N">
+            below the existing radios (use the next number).
+         2) Add a matching <label class="car-slide" for="repair-PREV"> with
+            your new photo inside the .car-track below. (PREV = the slide
+            shown just before the new one, so clicking the last existing
+            slide now goes to your new one; the new slide points to repair-1
+            so it loops back.) 
+         3) Update the two width rules in style.css: .car-track width and
+            .car-slide width become N * 100% and 100/N %.
+         4) Add the new transform rule for #repair-N:checked.-->
+  <div class="modal" id="zoom-repair" role="dialog" aria-modal="true" aria-label="Phone repair photo carousel">
+    <a class="modal-backdrop" href="#_" aria-label="Close"></a>
+    <figure class="modal-figure">
 
-            <div class="carousel">
-                <input type="radio" name="paperworks-carousel" id="paperworks-1" checked>
-                <input type="radio" name="paperworks-carousel" id="paperworks-2">
+      <!-- Hidden radio inputs track which slide is active -->
+      <input type="radio" name="repair-carousel" id="repair-1" checked>
+      <input type="radio" name="repair-carousel" id="repair-2">
+      <input type="radio" name="repair-carousel" id="repair-3">
+      <input type="radio" name="repair-carousel" id="repair-4">
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
+      <!-- Sliding track: clicking a photo advances to the next slide.
+           The LAST slide's `for` points to repair-1 so it loops back. -->
+      <div class="car-viewport">
+        <div class="car-track">
 
-                        <label class="slide" for="paperworks-2">
-                            <img src="evidence-paperwork.jpg" alt="Paperwork project sample">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-file-lines"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this paperwork — title, subject, what you learned.
-                                </p>
-                            </div>
-                        </label>
+          <label class="car-slide" for="repair-2">
+            <img class="modal-img" src="system/repair1.jpg" alt="Phone Repair — photo 1">
+          </label>
 
-                        <label class="slide" for="paperworks-1">
-                            <img src="evidence-paperwork-2.jpg" alt="Second paperwork sample">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-file-lines"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this paperwork — title, subject, what you learned.
-                                </p>
-                            </div>
-                        </label>
+          <label class="car-slide" for="repair-3">
+            <img class="modal-img" src="system/repair2.jpg" alt="Phone Repair — photo 2">
+          </label>
 
-                    </div>
-                </div>
-            </div>
-        </article>
+          <label class="car-slide" for="repair-4">
+              <img class="modal-img" src="system/repair3.jpg" alt="Phone Repair — photo 3">
+            </label>
 
-        <!-- ========== PHONE REPAIR & TECH ACTIVITIES ==========
-             #phone-repair — linked from the "Phone Repair" card. -->
-        <article id="phone-repair" class="detail-block">
-            <div class="detail-heading">
-                <i class="fa-solid fa-screwdriver-wrench card-icon"></i>
-                <h3>Phone Repair &amp; Tech Activities</h3>
-            </div>
-            <p>
-                Outside of coding, I enjoy hands-on tech work — especially phone repair.
-                I've handled screen and battery replacements, software troubleshooting,
-                and general hardware diagnostics. This hobby built my patience,
-                precision, and problem-solving mindset that carries over to web development.
-            </p>
+          <label class="car-slide" for="repair-1">
+              <img class="modal-img" src="system/repair4.jpg" alt="Phone Repair — photo 4">
+            </label>
 
-            <div class="carousel">
-                <input type="radio" name="repair-carousel" id="repair-1" checked>
-                <input type="radio" name="repair-carousel" id="repair-2">
+        </div>
+      </div>
+      <figcaption class="modal-caption">Phone Repair &amp; Tech Activities — tap a photo to see the next one</figcaption>
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
+    </figure>
+    <a class="modal-close" href="#_" aria-label="Close">✕</a>
+  </div>
 
-                        <label class="slide" for="repair-2">
-                            <img src="evidence-repair.jpg" alt="Phone repair work">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-screwdriver-wrench"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of the repair — device, what was fixed, what you learned.
-                                </p>
-                            </div>
-                        </label>
-
-                        <label class="slide" for="repair-1">
-                            <img src="evidence-repair-2.jpg" alt="Second phone repair">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-screwdriver-wrench"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of the repair — device, what was fixed, what you learned.
-                                </p>
-                            </div>
-                        </label>
-
-                    </div>
-                </div>
-            </div>
-        </article>
-
-        <!-- ========== THIS PORTFOLIO DETAILS ==========
-             #portfolio — linked from the "This Portfolio" card. -->
-        <article id="portfolio" class="detail-block">
-            <div class="detail-heading">
-                <i class="fa-solid fa-globe card-icon"></i>
-                <h3>This Portfolio</h3>
-            </div>
-            <p>
-                This website is itself one of my projects — a minimalist, professional
-                personal portfolio built entirely with semantic HTML5, CSS3 (Flexbox &amp; Grid),
-                and Font Awesome icons. It features a light gradient theme plus an automatic
-                dark theme via media queries, full mobile responsiveness, and anchor-based
-                navigation — all without a single line of JavaScript.
-                It is deployed live on GitHub Pages.
-            </p>
-
-            <div class="carousel">
-                <input type="radio" name="portfolio-carousel" id="portfolio-1" checked>
-                <input type="radio" name="portfolio-carousel" id="portfolio-2">
-
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
-
-                        <label class="slide" for="portfolio-2">
-                            <img src="evidence-portfolio-live.jpg" alt="Portfolio deployed on GitHub Pages">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-globe"></i> Live on GitHub Pages
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Screenshot of this site deployed on GitHub Pages.
-                                </p>
-                            </div>
-                        </label>
-
-                        <label class="slide" for="portfolio-1">
-                            <img src="evidence-portfolio-code.jpg" alt="Portfolio HTML/CSS source code">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-code"></i> Source Code
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    The clean HTML5 &amp; CSS3 behind this portfolio.
-                                </p>
-                            </div>
-                        </label>
-
-                    </div>
-                </div>
-            </div>
-
-            <a href="https://github.com/LerasanReyian/LerasanReyian.github.io" target="_blank" rel="noopener" class="card-link">View Source on GitHub <i class="fa-solid fa-arrow-right"></i></a>
-        </article>
-
-        <!-- Back link -->
-        <p class="back-link">
-            <a href="index.html#projects" class="card-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-        </p>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="footer">
-        <p>&copy; 2026 Reyian Lerasan <i class="fa-solid fa-circle footer-dot"></i> Built with HTML5 &amp; CSS3 <i class="fa-solid fa-circle footer-dot"></i> Deployed on GitHub Pages</p>
-    </footer>
+  </div><!-- /.shell -->
 
 </body>
 </html>

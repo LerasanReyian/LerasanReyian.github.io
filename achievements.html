@@ -1,232 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ========== ACHIEVEMENTS & EXPERIENCES — DETAIL PAGE ==========
-         This page opens when a visitor clicks an achievement card
-         on the main portfolio (index.html).
-         Anchors: #shs, #college, #awards -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Achievements and experiences of Reyian Lerasan — senior high school, college, and awards.">
-    <title>Achievements &amp; Experiences | Reyian Lerasan</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Reuses the same stylesheet as index.html — no duplicate CSS needed -->
-    <link rel="stylesheet" href="style.css">
+  <!--- =========================
+       ACHIEVEMENTS — sidebar blueprint page
+       ==============================-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Achievements and experiences of Reyian Lerasan — senior high school, college, and awards.">
+  <title>Achievements &amp; Experiences | Reyian Lerasan</title>
+
+  <!-- Font: Inter — the same typeface family the reference site uses -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <!-- All CSS lives in style.css (see the .shell section at the bottom) -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ========== HEADER (same nav as index for consistency) ========== -->
-    <header class="header">
-        <a href="index.html" class="logo">R<span>LB.</span></a>
+  <!-- ================================================================
+       PAGE SHELL
+       NOTE: the drawer controls live INSIDE the shell, before the
+       sidebar, because the CSS opens the drawer with the sibling
+       selector:  #drawer-toggle:checked ~ .sidebar
+       ================================================================ -->
+  <div class="shell">
 
-        <!-- Mobile burger toggle (checkbox hack — no JavaScript) -->
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="burger" aria-label="Open navigation menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
+    <!-- ---- Mobile drawer controls (visible only on small screens) ----
+          the checkbox holds the open/closed state, .burger is
+         the floating button, and .backdrop is an invisible label that
+         unchecks the box when tapped. Must stay siblings of .sidebar
+         for the :checked ~ selector. -->
+    <input type="checkbox" id="drawer-toggle" aria-label="Open menu">
+    <label class="burger" for="drawer-toggle" aria-label="Toggle navigation drawer">
+      <span></span><span></span><span></span>
+    </label>
+    <label class="backdrop" for="drawer-toggle" aria-label="Close menu"></label>
 
-        <nav>
-            <ul class="nav-list">
-                <!-- "_" links go back to sections on the main page -->
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#achievements">Achievements</a></li>
-                <li><a href="index.html#activities">Activities</a></li>
-                <li><a href="index.html#projects">Projects</a></li>
-            </ul>
+    <!-- ==============================================================
+         LEFT SIDEBAR — identity
+         ============================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <!-- Profile photo — same circular gradient-ring style as the About page -->
+        <img src="system/profile3.jpeg" alt="Photo of Reyian Lerasan" class="profile-img">
+
+        <!-- Name / role / tagline -->
+        <h1 class="profile-name">Reyian Lerasan</h1>
+        <p class="profile-role">IT Student · Developer</p>
+        <p class="profile-tag">Aspiring front-end / back-end developer crafting clean, people-friendly web experiences.</p>
+
+        <!-- Anchor nav. Each link sits inside a <label for="drawer-toggle">
+             so one tap both navigates (the <a>) and closes the drawer
+             (the label unchecks the checkbox) — pure HTML/CSS. -->
+        <nav class="side-nav" aria-label="Page sections">
+          <label for="drawer-toggle"><a href="#achievements" class="active">Achievements</a></label>
+          <label for="drawer-toggle"><a href="#awards">Awards</a></label>
+          <label for="drawer-toggle"><a href="index.html">← Back Home</a></label>
         </nav>
-        <a href="index.html" class="visit-btn"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
-    </header>
+      </div>
 
-    <!-- ================= CAROUSEL REFERENCE ======================-->
-    <section class="page-detail">
-        <h2 class="section-title">Achievements <span>&amp;</span> Experiences</h2>
-        <p class="section-sub">The full story behind my milestones. Click a picture to see the next one.</p>
+      <!-- Social links -->
+      <div class="side-socials">
+        <a href="https://github.com/LerasanReyian" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/lerasan-b0b563327/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        <a href="mailto:rlerasan_24000000@uic.edu.ph" aria-label="Email"><i class="fa-solid fa-paper-plane"></i></a>
+      </div>
+    </aside>
 
-        <!-- ========== SENIOR HIGH SCHOOL ===============
-             #shs — linked from the "Senior High School" card. -->
-        <article id="shs" class="detail-block">
-            <div class="detail-heading">
-                <i class="fa-solid fa-school card-icon"></i>
-                <h3>Senior High School</h3>
-            </div>
-            <p>
-                During senior high school, I took the Science, Technology, Engineering, and Mathematics (STEM) strand. Even though it is slightly different from my current field of study, it introduced me the basic and fundamentals of mathematics where i can apply this to my course in computer fundamentals and basic programming. This is where my curiosity
-                for technology began — learning how computers work and how software is built
-                inspired me to pursue IT in college.
-            </p>
+    <!-- ==============================================================
+         RIGHT CONTENT COLUMN
+         ============================================================== -->
+    <main class="content">
 
-            <!-- ===== CSS CAROUSEL: radios first, then track ===== -->
-            <div class="carousel">
-                <!-- Radio buttons — "checked" on the first one shows it at start -->
-                <input type="radio" name="shs-carousel" id="shs-1" checked>
-                <input type="radio" name="shs-carousel" id="shs-2">
+      <!-- ============ ACHIEVEMENTS ============
+           Each row is an <a href="#zoom-..."> — clicking it opens the
+           matching .modal below via the CSS :target selector.
+           To re-theme: swap the href + the modal id + img src together. -->
+      <section id="achievements" class="section">
+        <h2>Achievements</h2>
+        <ul>
+          <li class="xp-item" id="shs">
+            <a class="xp-link" href="#zoom-shs">
+              <span class="xp-view">View</span>
+              <span class="xp-date">2022 — 2024</span>
+              <div>
+                <h3 class="xp-role">Senior High School</h3>
+                <p class="xp-org">STEM Strand</p>
+                <p class="xp-desc">Completed the Science, Technology, Engineering, and Mathematics strand — My cherished experience that worth to remember and ignited my passion for technology.</p>
+                <ul class="xp-tags"><li>STEM</li><li>Mathematics</li><li>Foundations</li></ul>
+              </div>
+            </a>
+          </li>
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
+          <li class="xp-item" id="college">
+            <a class="xp-link" href="#zoom-college">
+              <span class="xp-view">View</span>
+              <span class="xp-date">2023 — 2024</span>
+              <div>
+                <h3 class="xp-role">1st Year College · BSIT</h3>
+                <p class="xp-org">University of The Immaculate Conception</p>
+                <p class="xp-desc">Programming fundamentals, computer hardware, labs and collaborative group projects.</p>
+                <ul class="xp-tags"><li>HTML5</li><li>CSS3</li><li>Programming</li></ul>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </section>
 
-                        <!-- Slide 1: clicking it jumps to Slide 2 -->
-                        <label class="slide" for="shs-2">
-                            <img src="system/evidence-shs.jpeg" alt="SHS photo 1">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-camera"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this picture — what it shows and why it matters.
-                                </p>
-                            </div>
-                        </label>
+      <!-- ============ AWARDS ============ -->
+      <section id="awards" class="section">
+        <h2>Awards &amp; Recognition</h2>
+        <ul>
 
-                        <!-- Slide 2: clicking it loops back to Slide 1 -->
-                        <label class="slide" for="shs-1">
-                            <img src="evidence-shs-2.jpg" alt="SHS photo 2">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-camera"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this picture — what it shows and why it matters.
-                                </p>
-                            </div>
-                        </label>
+          <li class="xp-item">
+            <a class="xp-link" href="system/ai-for-cert.pdf" target="_blank" rel="noopener" aria-label="AI For Everyone Certificate">
+              <span class="xp-view">View</span>
+              <span class="xp-date">February 22, 2025</span>
+              <div>
+                <h3 class="xp-role">AI For Everyone </h3>
+                <p class="xp-org">College</p>
+                <p class="xp-desc">An online course authorized by DeepLearning.AI and offered through Coursera. <a href="https://coursera.org/verify/XH4BGR73VHUD" target="_blank" rel="noopener" aria-label="View Coursera Certificate"> <strong>Verify Certificate</strong></a> </p>
+                <ul class="xp-tags"><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-                    </div>
-                </div>
-            </div>
-        </article>
+           <li class="xp-item">
+            <a class="xp-link" href="system/ia-cert.pdf" target="_blank" rel="noopener" aria-label="Introduction to Artificial Intelligence (AI)">
+              <span class="xp-view">View</span>
+              <span class="xp-date">February 15, 2025</span>
+              <div>
+                <h3 class="xp-role">Introduction to Artificial Intelligence (AI)</h3>
+                <p class="xp-org">College</p>
+                <p class="xp-desc">An online course authorized by IBM and offered through Coursera. <a href="https://coursera.org/verify/HN9UF9PTAPMQ" target="_blank" rel="noopener" aria-label="View Coursera Certificate"> <strong>Verify Certificate</strong></a></p>
+                <ul class="xp-tags"><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-        <!-- ========== 1ST YEAR COLLEGE ==========
-             #college — linked from the "1st Year College" card.-->
-        <article id="college" class="detail-block">
-            <div class="detail-heading">
-                <i class="fa-solid fa-graduation-cap card-icon"></i>
-                <h3>1st Year College</h3>
-            </div>
-            <p>
-                My first year at the University of The Immaculate Conception as a BSIT student
-                covered programming fundamentals, computer hardware, and — my favorite —
-                web development basics with HTML5 and CSS3. I joined class group projects
-                and labs where I got to collaborate and problem-solve with classmates.
-            </p>
+          <li class="xp-item">
+            <a class="xp-link" href="system/IG-cert.pdf" target="_blank" rel="noopener" aria-label="Introduction to Generative AI">
+              <span class="xp-view">View</span>
+              <span class="xp-date">February 12, 2025</span>
+              <div>
+                <h3 class="xp-role">Introduction to Generative AI</h3>
+                <p class="xp-org">College</p>
+                <p class="xp-desc">An online course authorized by Google Cloud and offered through Coursera. <a href="https://coursera.org/verify/N647ZB0DB2GS" target="_blank" rel="noopener" aria-label="View Coursera Certificate"> <strong>Verify Certificate</strong></a></p>
+                <ul class="xp-tags"><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-            <div class="carousel">
-                <input type="radio" name="college-carousel" id="college-1" checked>
-                <input type="radio" name="college-carousel" id="college-2">
+          <li class="xp-item">
+            <a class="xp-link" href="system/ethicalH-cert.pdf" target="_blank" rel="noopener" aria-label="Ethical Hacking Fundamentals">
+              <span class="xp-view">View</span>
+              <span class="xp-date">February 28, 2025</span>
+              <div>
+                <h3 class="xp-role">Ethical Hacking Fundamentals</h3>
+                <p class="xp-org">College</p>
+                <p class="xp-desc">An online course authorized by LearnKartS and offered through Coursera. <a href="https://coursera.org/verify/CRMPEODU1IJ1" target="_blank" rel="noopener" aria-label="View Coursera Certificate"> <strong>Verify Certificate</strong></a></p>
+                <ul class="xp-tags"><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
+          <li class="xp-item">
+            <a class="xp-link" href="#zoom-award-3">
+              <span class="xp-view">View</span>
+              <span class="xp-date">2024-2025</span>
+              <div>
+                <h3 class="xp-role">Academic Recognition</h3>
+                <p class="xp-org">University of The Immaculate Conception</p>
+                <p class="xp-desc">Each award motivated me to keep improving in my studies and in my craft.</p>
+                <ul class="xp-tags"><li>Recognition</li><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-                        <label class="slide" for="college-2">
-                            <img src="evidence-college.jpg" alt="College photo 1">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-camera"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this picture — what it shows and why it matters.
-                                </p>
-                            </div>
-                        </label>
+          <li class="xp-item">
+            <a class="xp-link" href="#zoom-award-1">
+              <span class="xp-view">View</span>
+              <span class="xp-date">2023-2024</span>
+              <div>
+                <h3 class="xp-role">Academic Recognition</h3>
+                <p class="xp-org">Senior High School</p>
+                <p class="xp-desc">Recognition for consistent effort and performance throughout senior high school.</p>
+                <ul class="xp-tags"><li>Recognition</li><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-                        <label class="slide" for="college-1">
-                            <img src="evidence-college-2.jpg" alt="College photo 2">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-camera"></i> Write your caption
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this picture — what it shows and why it matters.
-                                </p>
-                            </div>
-                        </label>
+          <li class="xp-item">
+            <a class="xp-link" href="#zoom-award-2">
+              <span class="xp-view">View</span>
+              <span class="xp-date">2021-2022</span>
+              <div>
+                <h3 class="xp-role">Academic Recognition</h3>
+                <p class="xp-org">Senior High School</p>
+                <p class="xp-desc">Recognition for consistent effort and performance throughout senior high school.</p>
+                <ul class="xp-tags"><li>Recognition</li><li>Academics</li></ul>
+              </div>
+            </a>
+          </li>
 
-                    </div>
-                </div>
-            </div>
-        </article>
+        </ul>
+      </section>
 
-        <!-- ========== AWARDS & RECOGNITION ==========
-             #awards — linked from the "Awards & Recognition" card.-->
-        <article id="awards" class="detail-block">
-            <div class="detail-heading">
-                <i class="fa-solid fa-award card-icon"></i>
-                <h3>Awards &amp; Recognition</h3>
-            </div>
-            <p>
-                Throughout my academic journey I have received recognition for
-                consistent effort and performance. Each award motivated me to keep
-                improving in my studies and in my craft.
-            </p>
+      <p class="page-footer-note">
+        © 2026 Reyian Lerasan · Built with HTML5 &amp; CSS3 only
+      </p>
+    </main>
 
-            <div class="carousel">
-                <input type="radio" name="award-carousel" id="award-1" checked>
-                <input type="radio" name="award-carousel" id="award-2">
+  <!-- ================================================================
+       MODALS — one per achievement, opened by the :target selector.
+       To add a new one: copy a block, change the id, img src, caption,
+       and point a row's href at "that #id". Modals live inside .shell
+       so they inherit the scoped design tokens from style.css.
+       ================================================================ -->
+  <div class="modal" id="zoom-shs" role="dialog" aria-modal="true" aria-label="Senior High School photos">
+    <a class="modal-backdrop" href="#_" aria-label="Close"></a>
+    <figure class="modal-figure">
+      <input type="radio" name="shs-carousel" id="shs-1" checked>
+      <input type="radio" name="shs-carousel" id="shs-2">
+      <input type="radio" name="shs-carousel" id="shs-3">
+      <input type="radio" name="shs-carousel" id="shs-4">
+      <input type="radio" name="shs-carousel" id="shs-5">
+      <input type="radio" name="shs-carousel" id="shs-6">
+      <input type="radio" name="shs-carousel" id="shs-7">
 
-                <div class="carousel-viewport">
-                    <div class="carousel-track">
+      <div class="car-viewport">
+        <div class="car-track shs-track">
+          <label class="car-slide" for="shs-2">
+            <img class="modal-img" src="system/evidence-shs.jpeg" alt="Senior High School — photo 1">
+          </label>
 
-                        <label class="slide" for="award-2">
-                            <img src="evidence-award1.jpg" alt="Award certificate">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-certificate"></i> Award name or event
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this award — what it was for, when, and why it matters to you.
-                                </p>
-                            </div>
-                        </label>
+          <label class="car-slide" for="shs-3">
+            <!-- Placeholder: swap src to your second SHS photo -->
+            <img class="modal-img" src="system/shs1.jpg" alt="Senior High School — photo 2">
+          </label>
 
-                        <label class="slide" for="award-1">
-                            <img src="evidence-award2.jpg" alt="Second award or certificate">
-                            <div class="slide-caption">
-                                <div class="slide-title-row">
-                                    <span class="slide-label-text">
-                                        <i class="fa-solid fa-certificate"></i> Award name or event
-                                    </span>
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <p class="slide-description">
-                                    Description of this award — what it was for, when, and why it matters to you.
-                                </p>
-                            </div>
-                        </label>
+          <label class="car-slide" for="shs-4">
+            <!-- Placeholder: swap src to your second SHS photo -->
+            <img class="modal-img" src="system/shs2.jpg" alt="Senior High School — photo 2">
+          </label>
 
-                    </div>
-                </div>
-            </div>
-        </article>
+          <label class="car-slide" for="shs-5">
+            <!-- Placeholder: swap src to your second SHS photo -->
+            <img class="modal-img" src="system/shs3.jpeg" alt="Senior High School — photo 2">
+          </label>
 
-        <!-- Back link -->
-        <p class="back-link">
-            <a href="index.html#achievements" class="card-link"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-        </p>
-    </section>
+          <label class="car-slide" for="shs-6">
+            <!-- Placeholder: swap src to your second SHS photo -->
+            <img class="modal-img" src="system/shs4.jpeg" alt="Senior High School — photo 2">
+          </label>
 
-    <!-- ========== FOOTER ========== -->
-    <footer class="footer">
-        <p>&copy; 2026 Reyian Lerasan <i class="fa-solid fa-circle footer-dot"></i> Built with HTML5 &amp; CSS3 <i class="fa-solid fa-circle footer-dot"></i> Deployed on GitHub Pages</p>
-    </footer>
+          <label class="car-slide" for="shs-7">
+            <!-- Placeholder: swap src to your second SHS photo -->
+            <img class="modal-img" src="system/shs5.jpeg" alt="Senior High School — photo 2">
+          </label>
+
+            <label class="car-slide" for="shs-1">
+                <!-- Placeholder: swap src to your second SHS photo -->
+                <img class="modal-img" src="system/shs6.jpeg" alt="Senior High School — photo 2">
+        </div>
+      </div>
+      <figcaption class="modal-caption">Senior High School — STEM Strand · tap a photo to see the next</figcaption>
+    </figure>
+    <a class="modal-close" href="#_" aria-label="Close">✕</a>
+  </div>
+
+  <!-- ---- COLLEGE MODAL — CSS-only carousel ----
+       Same pattern as shs. Slide 2 is a placeholder until you add
+       a second college photo (e.g. system/evidence-college-2.jpg). -->
+  <div class="modal" id="zoom-college" role="dialog" aria-modal="true" aria-label="1st Year College photos">
+    <a class="modal-backdrop" href="#_" aria-label="Close"></a>
+    <figure class="modal-figure">
+      <input type="radio" name="college-carousel" id="college-1" checked>
+      <input type="radio" name="college-carousel" id="college-2">
+      <input type="radio" name="college-carousel" id="college-2">
+      <input type="radio" name="college-carousel" id="college-3">
+      <input type="radio" name="college-carousel" id="college-4">
+      <input type="radio" name="college-carousel" id="college-5">
+      <input type="radio" name="college-carousel" id="college-6">
+      
+
+      <div class="car-viewport">
+        <div class="car-track college-track">
+          <label class="car-slide" for="college-2">
+            <img class="modal-img" src="system/c1.jpg" alt="1st Year College — photo 1">
+          </label>
+
+          <label class="car-slide" for="college-3">
+            <!-- Placeholder: swap src to your second college photo -->
+            <img class="modal-img" src="system/c2.jpg" alt="1st Year College — photo 2">
+          </label>
+
+          <label class="car-slide" for="college-4">
+            <!-- Placeholder: swap src to your second college photo -->
+            <img class="modal-img" src="system/c3.jpg" alt="1st Year College — photo 2">
+          </label>
+
+          <label class="car-slide" for="college-5">
+            <!-- Placeholder: swap src to your second college photo -->
+            <img class="modal-img" src="system/c4.jpeg" alt="1st Year College — photo 2">
+          </label>
+
+          <label class="car-slide" for="college-6">
+            <!-- Placeholder: swap src to your second college photo -->
+            <img class="modal-img" src="system/c5.jpeg" alt="1st Year College — photo 2">
+          </label>
+
+          <label class="car-slide" for="college-1">
+            <!-- Placeholder: swap src to your second college photo -->
+            <img class="modal-img" src="system/c6.jpeg" alt="1st Year College — photo 2">
+          </label>
+
+        </div>
+      </div>
+      <figcaption class="modal-caption">1st Year College — BSIT, UIC · tap a photo to see the next</figcaption>
+    </figure>
+    <a class="modal-close" href="#_" aria-label="Close">✕</a>
+  </div>
+
+  <div class="modal" id="zoom-award-1" role="dialog" aria-modal="true" aria-label="SHS award">
+    <a class="modal-backdrop" href="#_" aria-label="Close"></a>
+    <figure class="modal-figure">
+      <img class="modal-img" src="system/b1.jpg" alt="Award — Academic Recognition, SHS">
+      <figcaption class="modal-caption">Award — Academic Recognition, Senior High School</figcaption>
+    </figure>
+    <a class="modal-close" href="#_" aria-label="Close">✕</a>
+  </div>
+
+  <div class="modal" id="zoom-award-2" role="dialog" aria-modal="true" aria-label="SHS award">
+    <a class="modal-backdrop" href="#_" aria-label="Close"></a>
+    <figure class="modal-figure">
+      <img class="modal-img" src="system/b2.jpg" alt="Award — Academic Recognition, SHS">
+      <figcaption class="modal-caption">Award — Academic Recognition, Senior High School</figcaption>
+    </figure>
+    <a class="modal-close" href="#_" aria-label="Close">✕</a>
+  </div>
+
+  <div class="modal" id="zoom-award-3" role="dialog" aria-modal="true" aria-label="College award">
+    <a class="modal-backdrop" href="#_" aria-label="Close"></a>
+    <figure class="modal-figure">
+      <img class="modal-img" src="system/b3.jpg" alt="Award — Academic Recognition, College">
+      <figcaption class="modal-caption">Award — Academic Recognition, College</figcaption>
+    </figure>
+    <a class="modal-close" href="#_" aria-label="Close">✕</a>
+  </div>
+
+  </div><!-- /.shell -->
 
 </body>
 </html>
