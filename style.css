@@ -187,8 +187,8 @@ section {
    Circular frame with gradient ring.
    Change width/height to resize the photo. */
 .profile-img {
-    width: 260px;
-    height: 260px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     object-fit: cover;         /* crops the photo to fit the circle */
     flex-shrink: 0;
@@ -613,7 +613,7 @@ section {
 
     /* Hero: shrink the photo and gap on smaller screens */
     .about-container { gap: 2.5rem; }
-    .profile-img { width: 200px; height: 200px; }
+    .profile-img { width: 260px; height: 260px; }
 
     /* Detail pages center their narrower content column naturally */
     .page-detail { padding-left: 4%; padding-right: 4%; }
@@ -845,7 +845,7 @@ section {
     section { padding: 6rem 16px; }
     .footer { padding: 2rem 16px; }
 
-    .profile-img { width: 160px; height: 160px; }
+    .profile-img { width: 260px; height: 260px; }
     .name { font-size: 1.8rem; }
     .tagline { font-size: 1rem; }
     .bio { font-size: 0.9rem; }
@@ -1434,9 +1434,9 @@ body:has(.shell){
 .shell .sidebar-inner{ padding: 0 32px; }
 
 /* Profile photo — circular crop with the blue→magenta gradient ring,
-   same treatment as the About page photo */
+   same treatment as the About page photo ---- sa achievment and project profile*/
 .shell .profile-img{
-    width: 96px; height: 96px;
+    width: 250px; height: 250px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
